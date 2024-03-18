@@ -25,11 +25,14 @@ function App() {
         <Route path="/details/:hotelId" element={<HotelDetails />} />
         {isLoggedIn && (
           <>
-            <Route path="/add-hotel" element={<AddHotel />} />
-            <Route path="/edit-hotel/:hotelId" element={<EditHotel />} />
-            <Route path="/my-hotels" element={<MyHotels />} />
-            <Route path="/hotel/:hotelId/booking" element={<HotelBooking />} />
-            <Route path="/my-bookings" element={<MyBookings />} />
+              <Route path="/add-hotel" element={<AddHotel />} />
+              <Route path="/edit-hotel/:hotelId" element={<EditHotel />} />
+              <Route path="/my-hotels" element={<MyHotels />} />
+              <Route
+                path="/hotel/:hotelId/booking"
+                element={<HotelBooking />}
+              />
+              <Route path="/my-bookings" element={<MyBookings />} />
           </>
         )}
         <Route path="*" element={<Navigate to="/" />} />

@@ -6,14 +6,14 @@ export type UserType = {
 	password: string,
 }
 
-export type Hoteltype = {
+export type HotelType = {
 	_id: string,
 	userId: string,
 	country: string,
 	city: string,
 	name: string,
 	type: string,
-	desciption: string,
+	description: string,
 	facilities: string[],
 	adultCount: number,
 	childCount: number,

@@ -39,7 +39,7 @@ const Register = () => {
     registerUser(data);
   });
   return (
-    <div className="max-w-[400px] mx-auto flex flex-col gap-6 h-screen">
+    <div className="max-w-[400px] mx-auto flex flex-col gap-6 pt-40 h-screen">
       <div className="flex flex-col gap-2 ">
         <h1 className="text-title text-3xl md:text-4xl font-semibold ">
           Create an account

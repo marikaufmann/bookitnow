@@ -14,14 +14,11 @@ export default {
         mutedtext: "#A1ABB9",
       },
       fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
+        ibm: ['"IBM Plex Sans"', "sans-serif"],
+        public: ['"Public Sans"', "sans-serif"],
+        logo: ["Aclonica", "sans-serif"],
       },
     },
-    // container: {
-    //   padding: {
-    //     md: "2rem",
-    //   },
-    // },
   },
   plugins: [],
 };
