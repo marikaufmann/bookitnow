@@ -8,7 +8,7 @@ const AddHotel = () => {
   const { showToast } = useAppContext();
   const { mutate: addHotel, isLoading } = useMutation(apiClient.addMyHotel, {
     onError: () => {
-      showToast({ message: 'Error saving hotel.', type: "ERROR" });
+      showToast({ message: "Error saving hotel.", type: "ERROR" });
     },
     onSuccess: () => {
       showToast({ message: "Hotel added successfully!", type: "SUCCESS" });
@@ -18,7 +18,11 @@ const AddHotel = () => {
   const onSave = (formData: FormData) => {
     addHotel(formData);
   };
-  return <ManageHotelForm onSave={onSave} isLoading={isLoading} />;
+  return (
+    <div className="max-w-7xl w-full mx-auto flex-1 px-8">
+      <ManageHotelForm onSave={onSave} isLoading={isLoading} />
+    </div>
+  );
 };
 
 export default AddHotel;

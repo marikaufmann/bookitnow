@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { CircleUserRound } from "lucide-react";
 import { AlignJustify, X, Hotel, TicketCheck } from "lucide-react";
 import { useAppContext } from "../hooks/use-app-context";
 import SignOutButton from "./SignOutButton";

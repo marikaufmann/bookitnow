@@ -1,15 +1,15 @@
 export type RegisterFormData = {
-	firstName: string,
-	lastName: string,
-	email: string,
-	password: string,
-	confirmPassword: string
-}
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
 
 export type SignInFormData = {
-	email: string,
-	password: string,
-}
+  email: string;
+  password: string;
+};
 
 export type HotelFormData = {
   name: string;
@@ -24,4 +24,18 @@ export type HotelFormData = {
   imageUrls: string[];
   adultCount: number;
   childCount: number;
+};
+export type HotelArticleType = {
+  _id: string,
+  name: string;
+  imageUrl: string;
+  caption: string;
+  text: string;
+};
+export type ArticleType = {
+  _id: string
+  title: string;
+  imageUrl: string;
+  text: string;
+  hotels: HotelArticleType[];
 };

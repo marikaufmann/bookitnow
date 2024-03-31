@@ -18,6 +18,9 @@ export default {
         public: ['"Public Sans"', "sans-serif"],
         logo: ["Aclonica", "sans-serif"],
       },
+      screens: {
+        laptop: "903px",
+      },
     },
   },
   plugins: [],

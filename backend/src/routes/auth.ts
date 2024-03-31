@@ -30,7 +30,6 @@ router.post('/login', [check('email', 'Email is required.').isEmail(), check('pa
 		res.status(200).json({ userId: user.id })
 
 	} catch (err) {
-		console.log(err);
 		res.status(500).json({ message: 'Something went wrong.' })
 
 	}

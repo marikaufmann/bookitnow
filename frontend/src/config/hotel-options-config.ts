@@ -39,3 +39,34 @@ export const hotelFacilities = [
   "Electric vehicle charging station",
   "Swimming pool",
 ];
+
+export const trendingCities = [
+  "London",
+  "Berlin",
+  "Amsterdam",
+  "Rome",
+  "Prague",
+];
+
+export const PopularTypes = [
+    "Hotels",
+    "Apartments",
+    "Villas",
+    "Holiday homes",
+    "Homestays",
+    "Guest houses",
+    "Resorts",
+    "Chalets",
+    "Hostels",
+    "Campsites",
+    "Lodges",
+    "Boats",
+    "Country houses",
+    "Luxury tents",
+    "Farm stays",
+    "Motels",
+    "Capsule hotels",
+    "Love hotels",
+    "Riads",
+    "Cruises",
+  ];

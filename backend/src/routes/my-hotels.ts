@@ -35,13 +35,10 @@ router.post('/add-hotel',
 			newHotel.userId = req.userId
 			newHotel.lastUpdated = new Date()
 			newHotel.imageUrls = imageUrls
-			console.log(req.body.imageFiles);
-			console.log(imageFiles);
 			const hotel = new Hotel(newHotel)
 			await hotel.save()
 			return res.status(201).send(hotel)
 		} catch (err) {
-			console.log(err);
 			return res.status(500).json({ message: 'Something went wrong.' })
 
 		}
@@ -105,7 +102,6 @@ router.put('/:hotelId', verifyToken,
 			await hotel.save()
 			return res.status(201).send(hotel)
 		} catch (err) {
-			console.log(err);
 			return res.status(500).json({ message: 'Something went wrong.' })
 		}
 	})

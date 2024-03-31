@@ -45,13 +45,16 @@ const EditHotel = () => {
     deleteHotel(hotelId);
   };
   return (
-    <ManageHotelForm
-      onSave={onSave}
-      onDelete={onDelete}
-      isLoading={isLoading}
-      isDeleting={isDeleting}
-      hotel={hotel}
-    />
+    <div className="max-w-7xl w-full mx-auto flex-1 px-8">
+
+      <ManageHotelForm
+        onSave={onSave}
+        onDelete={onDelete}
+        isLoading={isLoading}
+        isDeleting={isDeleting}
+        hotel={hotel}
+      />
+    </div>
   );
 };
 

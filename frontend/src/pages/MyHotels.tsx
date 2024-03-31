@@ -6,6 +6,8 @@ const MyHotels = () => {
   const { data: hotels } = useQuery("fetchMyHotels", apiClient.fetchMyHotels);
   if (!hotels)
     return (
+  <div className="max-w-7xl w-full mx-auto flex-1 px-8">
+
       <div className="pt-40 h-screen items-center flex flex-col gap-4">
         <h3 className="text-4xl ">No hotels here...</h3>
         <Link
@@ -14,8 +16,11 @@ const MyHotels = () => {
           Add hotel
         </Link>
       </div>
+  </div>
     );
   return (
+    <div className="max-w-7xl w-full mx-auto flex-1 px-8">
+
     <div className="flex flex-col gap-8 py-10 h-full">
       <div className="flex justify-between">
         <h1 className="md:text-4xl text-3xl font-semibold">My Hotels</h1>
@@ -36,6 +41,7 @@ const MyHotels = () => {
           </div>
         </Link>
       ))}
+    </div>
     </div>
   );
 };

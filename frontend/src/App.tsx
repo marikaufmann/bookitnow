@@ -11,6 +11,7 @@ import MyHotels from "./pages/MyHotels";
 import HotelBooking from "./pages/HotelBooking";
 import MyBookings from "./pages/MyBookings";
 import { useAppContext } from "./hooks/use-app-context";
+import Article from "./pages/Article";
 
 function App() {
   const { isLoggedIn } = useAppContext();
@@ -23,6 +24,7 @@ function App() {
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/search" element={<Search />} />
         <Route path="/details/:hotelId" element={<HotelDetails />} />
+        <Route path="/article/:articleId" element={<Article />} />
         {isLoggedIn && (
           <>
               <Route path="/add-hotel" element={<AddHotel />} />
