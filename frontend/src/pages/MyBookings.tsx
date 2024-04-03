@@ -1,6 +1,5 @@
-
 const MyBookings = () => {
-	return <div className="max-w-7xl w-full mx-auto flex-1 px-8">MyBookings</div>;
+  return <div></div>;
 };
 
 export default MyBookings;

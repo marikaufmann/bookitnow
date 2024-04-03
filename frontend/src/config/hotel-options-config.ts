@@ -41,11 +41,11 @@ export const hotelFacilities = [
 ];
 
 export const trendingCities = [
-  "London",
-  "Berlin",
-  "Amsterdam",
-  "Rome",
-  "Prague",
+  "London 🇬🇧",
+  "Berlin 🇩🇪",
+  "Amsterdam 🇳🇱" ,
+  "Rome 🇮🇹", 
+  "Prague 🇨🇿",
 ];
 
 export const PopularTypes = [

@@ -11,7 +11,8 @@ const Home = () => {
   const navigate = useNavigate();
   const { data: hotels } = useQuery("fetchHotels", apiClient.fetchHotels);
 
-  const handleSearch = (destination: string) => {
+  const handleSearch = (destinationWithFlag: string) => {
+    const destination = destinationWithFlag.split(' ')[0]
     sessionStorage.setItem("destination", destination);
     navigate("/search");
     navigate(0);

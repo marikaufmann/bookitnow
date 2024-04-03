@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import path from 'path'
+import path from "path";
 
 const UI_URL = "http://localhost:5173/";
 
@@ -36,13 +36,14 @@ test("should allow to add a hotel", async ({ page }) => {
   await page.getByLabel("Parking").check();
   await page.locator("[name=adultCount]").fill("2");
   await page.locator("[name=childCount]").fill("0");
+  await page.locator("[name=rooms]").fill("1");
 
   await page.setInputFiles('[name="imageFiles"]', [
     path.join(__dirname, "files", "1.jpg"),
     path.join(__dirname, "files", "2.jpg"),
   ]);
 
-  await page.getByRole("button", { name: "Save"}).click();
+  await page.getByRole("button", { name: "Save" }).click();
   await expect(page.getByText("Hotel added successfully!")).toBeVisible();
 });
 
@@ -85,7 +86,8 @@ test("should allow to delete hotel", async ({ page }) => {
   await page.getByLabel("Free WiFi").check();
   await page.getByLabel("Parking").check();
   await page.locator("[name=adultCount]").fill("2");
-  await page.locator("[name=childCount]").fill("0");
+  await page.locator("[name=childCount]").fill("1");
+  await page.locator("[name=rooms]").fill("1");
 
   await page.setInputFiles("[name=imageFiles]", [
     path.join(__dirname, "files", "1.jpg"),
@@ -95,7 +97,6 @@ test("should allow to delete hotel", async ({ page }) => {
   await page.getByRole("button", { name: "Save" }).click();
 
   await expect(page.getByText("Hotel added successfully!")).toBeVisible();
-  
 
   await page.getByText("Delete test name").click();
   await page.getByRole("button", { name: "Delete" }).click();

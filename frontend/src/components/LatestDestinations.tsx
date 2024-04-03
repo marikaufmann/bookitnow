@@ -23,7 +23,7 @@ const LatestDestinations = () => {
         {topRowHotels?.map((hotel) => (
           <Link
             key={hotel._id}
-            to={`/hotel/${hotel._id}`}
+            to={`/details/${hotel._id}`}
             className="flex-1 relative h-[300px] hover:shadow-2xl overflow-hidden"
           >
             <img
@@ -41,7 +41,7 @@ const LatestDestinations = () => {
         {bottomRowHotels?.map((hotel) => (
           <Link
             key={hotel._id}
-            to={`/hotel/${hotel._id}`}
+            to={`/details/${hotel._id}`}
             className="h-[200px] min-w-[250px] relative flex-1 hover:shadow-2xl overflow-hidden"
           >
             <img

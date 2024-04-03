@@ -17,6 +17,7 @@ export type HotelType = {
   facilities: string[];
   adultCount: number;
   childCount: number;
+  rooms: number;
   pricePerNight: number;
   starRating: number;
   imageUrls: string[];
@@ -38,6 +39,7 @@ export type BookingType = {
   email: string;
   adultCount: number;
   childCount: number;
+  rooms: number;
   checkIn: Date;
   checkOut: Date;
   totalCost: number;

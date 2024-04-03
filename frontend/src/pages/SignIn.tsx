@@ -1,12 +1,13 @@
 import { Mail } from "lucide-react";
 import { useMutation, useQueryClient } from "react-query";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import * as apiClient from "../api-client";
 import { useAppContext } from "../hooks/use-app-context";
 import { useForm } from "react-hook-form";
 import { SignInFormData } from "../types";
 const SignIn = () => {
   const navigate = useNavigate();
+  const { state } = useLocation();
   const queryClient = useQueryClient();
   const { showToast } = useAppContext();
   const { mutate: signIn } = useMutation(apiClient.signIn, {
@@ -16,7 +17,7 @@ const SignIn = () => {
     onSuccess: async () => {
       await queryClient.invalidateQueries("validateToken");
       showToast({ message: "Signed in!", type: "SUCCESS" });
-      navigate("/");
+      navigate(state?.from?.pathname || "/");
     },
   });
   const {

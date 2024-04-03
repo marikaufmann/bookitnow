@@ -43,16 +43,16 @@ const Header = () => {
                   </button>
                 </Link>
               </div>
-              <SignOutButton styles="" />
+              <SignOutButton />
             </>
           ) : (
             <div className="flex gap-3 divide-x divide-gray-600">
-              <Link to="/register" className="flex">
+              <Link to="/register" state={{ from: location }}>
                 <button className=" text-bg py-2 px-3  text-normal tracking-wide  rounded-md hover:bg-[#505c7f]">
                   Sign Up
                 </button>
               </Link>
-              <Link to="/sign-in " className="">
+              <Link to="/sign-in " state={{ from: location }}>
                 <button className=" text-bg py-2 px-3 ml-3 text-normal tracking-wide rounded-md hover:bg-[#505c7f] ">
                   Login
                 </button>
@@ -123,7 +123,7 @@ const Header = () => {
                   variants={mobileNavListVariant}
                   {...mobileNavExitProps}
                 >
-                  <Link to="/register " className="">
+                  <Link to="/register " state={{ from: location }}>
                     <button className=" text-bg w-[200px] py-2 px-3 ml-3 text-normal text-sm flex gap-2 justify-center items-center rounded-md hover:bg-[#505c7f] ">
                       Sign Up
                     </button>
@@ -133,7 +133,7 @@ const Header = () => {
                   variants={mobileNavListVariant}
                   {...mobileNavExitProps}
                 >
-                  <Link to="/sign-in " className="">
+                  <Link to="/sign-in " state={{ from: location }}>
                     <button className=" text-bg w-[200px] py-2 px-3 ml-3 text-normal text-sm flex gap-2 justify-center items-center rounded-md hover:bg-[#505c7f] ">
                       Login
                     </button>

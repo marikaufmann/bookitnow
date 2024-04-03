@@ -34,7 +34,7 @@ const SearchResultCard = ({ hotel }: { hotel: HotelType }) => {
             <span> &nbsp;•&nbsp;</span>
             <span className="underline">{hotel.country}</span>
           </p>
-          <p className="max-w-[270px] text-xs text-gray-700 sm:line-clamp-3 line-clamp-2 leading-5">
+          <p className="max-w-[270px] md:max-w-[440px] text-xs text-gray-700 sm:line-clamp-3 line-clamp-2 lg:line-clamp-4 leading-5">
             {hotel.description}
           </p>
         </div>

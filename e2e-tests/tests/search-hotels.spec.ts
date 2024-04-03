@@ -14,10 +14,20 @@ test.beforeEach(async ({ page }) => {
   await expect(page.getByRole("button", { name: "Sign Out" })).toBeVisible();
 });
 
-test("should allow to search for hotels", async ({ page }) => {
+test("should show hotlel search result", async ({ page }) => {
   await page.goto(UI_URL);
-  await page.getByPlaceholder("Where are you going?").fill("London");
+  await page.getByPlaceholder("Where are you going?").fill("Test city");
   await page.getByRole("button", { name: "Search" }).click();
-  await expect(page.getByText("London: 1 property found")).toBeVisible();
-  await expect(page.getByText("Testname")).toBeVisible();
+  await expect(page.getByText("Test city: 1 property found")).toBeVisible();
+  await expect(page.getByText("Test name")).toBeVisible();
+});
+
+test("should allow to view hotel details", async ({ page }) => {
+  await page.goto(UI_URL);
+  await page.getByPlaceholder("Where are you going?").fill("Test city");
+  await page.getByRole("button", { name: "Search" }).click();
+  await page.getByRole("link", { name: "Show prices" }).click();
+  await expect(page.getByText("Test name")).toBeVisible();
+  await expect(page).toHaveURL(/details/);
+  await expect(page.getByRole("button", { name: "Book now" })).toBeVisible();
 });

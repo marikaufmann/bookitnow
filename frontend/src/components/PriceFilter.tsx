@@ -20,7 +20,7 @@ const PriceFilter = ({ onChange }: { onChange: (value: number[]) => void }) => {
 
   return (
     <div className="py-4 px-4">
-      <h3 className="font-semibold mb-2">Price per night</h3>
+      <h3 className="font-semibold mb-2">Your budget (per night)</h3>
       <Slider
         min={MIN}
         max={MAX}
@@ -30,11 +30,8 @@ const PriceFilter = ({ onChange }: { onChange: (value: number[]) => void }) => {
         color="primary"
         valueLabelDisplay="auto"
       />
-      <p className="text-title text-sm">
-        The price range is{" "}
-        <span className="whitespace-nowrap">
-          {value[0]} - {value[1]}€
-        </span>
+      <p className="text-title whitespace-nowrap">
+        € {value[0]}&nbsp; – &nbsp;€ {value[1]}
       </p>
     </div>
   );

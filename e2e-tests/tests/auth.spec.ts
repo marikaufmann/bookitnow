@@ -21,7 +21,6 @@ test("should allow user to sign in", async ({ page }) => {
   await expect(page.getByRole("link", { name: "My Hotels" })).toBeVisible();
 });
 
-
 test("should allow user to register", async ({ page }) => {
   const testEmail = `test_email${
     Math.floor(Math.random() * 9000) + 1000
@@ -54,18 +53,10 @@ test("should allow user to sign out", async ({ page }) => {
 
   await page.getByRole("link", { name: "Login" }).click();
 
-  await expect(page.getByRole("heading", { name: "Sign in" })).toBeVisible();
-
   await page.locator("[name=email]").fill("1@1.com");
   await page.locator("[name=password]").fill("password123");
 
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
-
-  await expect(page.getByText("Signed in!")).toBeVisible();
-
-  await expect(page.getByRole("button", { name: "Sign Out" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "My Bookings" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "My Hotels" })).toBeVisible();
 
   await page.getByRole("button", { name: "Sign Out" }).click();
 

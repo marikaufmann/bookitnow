@@ -14,11 +14,14 @@ import {
   HotelType,
 } from "../../../backend/src/shared/types";
 import Pagination from "../components/Pagination";
+import { useLocation } from "react-router-dom";
 const Search = () => {
   const search = useSearchContext();
+  const location = useLocation();
+  const type = location?.state?.initType ? location?.state?.initType : "";
   const [page, setPage] = useState<number>(1);
   const [selectedFacilities, setSelectedFacilities] = useState<string[]>([]);
-  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([type]);
   const [selectedStars, setSelectedStars] = useState<string[]>([]);
   const [selectedMinPrice, setSelectedMinPrice] = useState<
     number | undefined
@@ -33,6 +36,7 @@ const Search = () => {
     checkOut: search.checkOut.toISOString(),
     adultCount: search.adultCount.toString(),
     childCount: search.childCount.toString(),
+    rooms: search.rooms.toString(),
     page: page.toString(),
     facilities: selectedFacilities,
     types: selectedTypes,
@@ -45,7 +49,6 @@ const Search = () => {
     ["searchHotels", searchParams],
     () => apiClient.searchHotels(searchParams)
   );
-
   const handleFacilities = (e: React.ChangeEvent<HTMLInputElement>) => {
     const facility = e.target.value;
     setSelectedFacilities((prevFacilities) =>

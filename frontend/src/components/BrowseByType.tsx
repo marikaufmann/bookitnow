@@ -5,11 +5,12 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { PopularTypes } from "../config/hotel-options-config";
 import useWindowDimentions from "../hooks/use-window-dimentions";
+import { useNavigate } from "react-router-dom";
 const CLOUDINARY_TYPES_URL = import.meta.env.VITE_CLOUDINARY_TYPES_URL;
 
 const BrowseByType = () => {
   const { width } = useWindowDimentions();
-
+  const navigate = useNavigate();
   return (
     <div className="mt-10">
       <h1 className="text-title md:text-3xl text-xl font-bold mb-4">
@@ -21,10 +22,11 @@ const BrowseByType = () => {
         slidesPerView={width > 850 ? 3.5 : 2.5}
         spaceBetween={25}
         modules={[Pagination, Navigation, Mousewheel, Keyboard]}
-        className=" flex gap-2"
+        className="flex gap-2"
       >
         {PopularTypes.map((type) => (
           <SwiperSlide
+            onClick={() => navigate("/search", { state: { initType: type } })}
             key={type}
             className="rounded-md hover:shadow-2xl overflow-hidden"
           >

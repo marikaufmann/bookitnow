@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import Hotel from "../models/hotel";
 import { HotelType } from "../shared/types";
+import { param, validationResult } from "express-validator";
 const router = express.Router();
 
 router.get("/destination", async (req: Request, res: Response) => {
@@ -33,21 +34,9 @@ router.get("/destination", async (req: Request, res: Response) => {
     return res.status(500).json({ message: "Error fetching destinations." });
   }
 });
-router.get("/", async (req: Request, res: Response) => {
-  try {
-    const hotels = await Hotel.find();
-    if (!hotels) return res.status(400).json({ message: "No hotels found" });
-    return res.send(hotels);
-  } catch (err) {
-    return res.status(500).json({ message: "Error fetching hotels." });
-  }
-});
-
 router.get("/search", async (req: Request, res: Response) => {
   try {
     const query = constructSearchQuery(req.query);
-    // console.log(query)
-    console.log(req.query);
     let sortOptions = {};
     switch (req.query.sortOption) {
       case "starRating":
@@ -61,8 +50,10 @@ router.get("/search", async (req: Request, res: Response) => {
         break;
     }
     const pageSize = 10;
-    const pageNumber = req.query.page ? req.query.page.toString() : "1";
-    const skip = (parseInt(pageNumber) - 1) * pageSize;
+    const pageNumber = parseInt(
+      req.query.page ? req.query.page.toString() : "1"
+    );
+    const skip = (pageNumber - 1) * pageSize;
     const hotels = await Hotel.find(query)
       .sort(sortOptions)
       .limit(pageSize)
@@ -76,11 +67,39 @@ router.get("/search", async (req: Request, res: Response) => {
         pages: Math.ceil(total / pageSize),
       },
     };
-    res.json(response);
+    res.status(200).send(response);
+  } catch (err) {
+    console.log("error", err);
+    return res.status(500).json({ message: "Error fetching hotels." });
+  }
+});
+router.get("/", async (req: Request, res: Response) => {
+  try {
+    const hotels = await Hotel.find();
+    if (!hotels) return res.status(400).json({ message: "No hotels found" });
+    return res.send(hotels);
   } catch (err) {
     return res.status(500).json({ message: "Error fetching hotels." });
   }
 });
+router.get(
+  "/:hotelId",
+  [param("hotelId").notEmpty().withMessage("Hotel ID is required.")],
+  async (req: Request, res: Response) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    try {
+      const id = req.params.hotelId;
+      const hotel = await Hotel.findById(id);
+      if (!hotel) return res.status(404).json({ message: "Hotel not found" });
+      return res.send(hotel);
+    } catch (err) {
+      return res.status(500).json({ message: "Error fetching hotel." });
+    }
+  }
+);
 
 const constructSearchQuery = (searchQuery: any) => {
   const constructedQuery: any = {};
@@ -99,6 +118,11 @@ const constructSearchQuery = (searchQuery: any) => {
   if (searchQuery.childCount) {
     constructedQuery.childCount = {
       $gte: parseInt(searchQuery.childCount),
+    };
+  }
+  if (searchQuery.rooms) {
+    constructedQuery.rooms = {
+      $gte: parseInt(searchQuery.rooms),
     };
   }
   if (searchQuery.facilities) {
@@ -130,4 +154,5 @@ const constructSearchQuery = (searchQuery: any) => {
 
   return constructedQuery;
 };
+
 export default router;

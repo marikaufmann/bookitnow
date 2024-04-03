@@ -20,6 +20,7 @@ const SearchBar = () => {
   const [checkOut, setCheckOut] = useState<Date>(search.checkOut);
   const [adultCount, setAdultCount] = useState<number>(search.adultCount);
   const [childCount, setChildCount] = useState<number>(search.childCount);
+  const [rooms, setRooms] = useState<number>(search.rooms);
   const [isCountOpen, setIsCountOpen] = useState(false);
   const [isDestinationOpen, setIsDestinationOpen] = useState(false);
   const countRef = useRef(null);
@@ -59,7 +60,8 @@ const SearchBar = () => {
       checkIn,
       checkOut,
       adultCount,
-      childCount
+      childCount,
+      rooms
     );
     navigate("/search");
   };
@@ -79,9 +81,9 @@ const SearchBar = () => {
         >
           <label
             ref={destinationRef}
-            id='destination'
+            id="destination"
             htmlFor=""
-            className="bg-[#a6c4d8]/20 rounded-md flex items-center h-full  flex-1 px-2 max-lg:text-sm relative max-laptop:w-full py-3 z-50"
+            className="bg-[#a6c4d8]/20 rounded-md flex items-center h-full  flex-[40%] px-2 max-lg:text-sm relative max-laptop:w-full py-3 z-50"
           >
             <BedDouble className="absolute text-gray-400 w-5 h-5" />
             <input
@@ -115,7 +117,7 @@ const SearchBar = () => {
               </>
             )}
           </label>
-          <label className="w-full py-3 cursor-pointer laptop:w-[180px] bg-[#a6c4d8]/20 rounded-md relative pl-2 flex items-center max-lg:text-sm ">
+          <label className="w-full py-3 cursor-pointer  bg-[#a6c4d8]/20 rounded-md relative pl-2 flex items-center max-lg:text-sm flex-[15%]">
             <CalendarDays className="absolute text-gray-400 w-5 h-5" />
             <DatePicker
               portalId="root-portal"
@@ -131,11 +133,8 @@ const SearchBar = () => {
               wrapperClassName="min-w-full"
             />
           </label>
-          <label
-            htmlFor=""
-            className="w-full py-3 cursor-pointer laptop:w-[180px] bg-[#a6c4d8]/20 rounded-md pl-2 flex items-center max-lg:text-sm"
-          >
-            <div className="w-full">
+          <label className="w-full py-3 cursor-pointer  bg-[#a6c4d8]/20 rounded-md pl-2 flex items-center max-lg:text-sm flex-[15%]">
+            <div className="w-full ">
               <CalendarDays className="absolute text-gray-400 w-5 h-5" />
               <DatePicker
                 portalId="root-portal"
@@ -147,26 +146,33 @@ const SearchBar = () => {
                 minDate={minDate}
                 maxDate={maxDate}
                 placeholderText="Check out date"
-                className="min-w-full bg-transparent rounded-md focus:outline-none ml-7 text-title"
+                className="min-w-full bg-transparent rounded-md focus:outline-none ml-7  text-title"
                 wrapperClassName="min-w-full"
               />
             </div>
           </label>
           <label
             htmlFor=""
-            className="laptop:w-[220px] flex bg-[#a6c4d8]/20 relative rounded-lg items-center pl-2 w-full py-3"
+            className=" flex bg-[#a6c4d8]/20 relative rounded-lg items-center flex-[30%] pl-2 w-full py-3 "
           >
-            <div
-              className="h-full flex w-full items-center cursor-pointer relative"
+            <UserRound className="absolute text-gray-400 w-5 h-5" />
+            <input
+              type="text"
+              className="h-full flex w-full items-center placeholder-title cursor-pointer focus:outline-none relative bg-transparent ml-6 text-sm "
+              readOnly
+              value={`${adultCount} ${
+                adultCount === 1 ? "adult" : "adults"
+              } • ${childCount} ${
+                childCount === 1 ? "child" : "children"
+              } • ${rooms} ${rooms === 1 ? "room" : "rooms"}`}
               onClick={() => setIsCountOpen(true)}
-            >
-              <UserRound className="absolute text-gray-400 w-5 h-5" />
-              <p className="text-gray-400 ml-6 max-lg:text-sm">Guests</p>
-            </div>
+              placeholder={`${search.adultCount} adults • ${search.childCount} children • ${search.rooms} rooms`}
+            />
+
             {isCountOpen && (
               <div
                 ref={countRef}
-                className="absolute bg-bg laptop:w-[300px] w-full laptop:-right-2 laptop:mt-14 mt-12 align-end top-0 rounded-lg flex flex-col h-[200px] shadow-lg p-6 gap-5 z-50"
+                className="absolute bg-bg laptop:w-[300px] w-full laptop:-right-2 laptop:mt-14 mt-12 align-end top-0 rounded-lg flex flex-col h-[260px] shadow-lg p-6 gap-5 z-50"
               >
                 <div className="flex  justify-between items-center">
                   <h3 className="text-title">Adults</h3>
@@ -218,9 +224,36 @@ const SearchBar = () => {
                     </button>
                   </div>
                 </div>
+                <div className="flex justify-between items-center">
+                  <h3 className="text-title">Rooms</h3>
+                  <div className="border border-gray-300 flex laptop:w-[120px] justify-between items-center p-2 rounded w-[220px] ">
+                    <button
+                      className="w-[30px] text-gray-500 scale-125 disabled:text-gray-200"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setRooms((prev) => prev - 1);
+                      }}
+                      disabled={rooms === 1}
+                    >
+                      —
+                    </button>
+                    <p className="text-title font-semibold">{rooms}</p>
+                    <button
+                      className="w-[30px] text-gray-500 scale-125"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setRooms((prev) => prev + 1);
+                      }}
+                    >
+                      ＋
+                    </button>
+                  </div>
+                </div>
                 <button
                   className="w-full border border-primary rounded py-1 text-primary hover:bg-mutedbgblue"
-                  onClick={() => setIsCountOpen(false)}
+                  onClick={() => {
+                    setIsCountOpen(false);
+                  }}
                 >
                   Done
                 </button>

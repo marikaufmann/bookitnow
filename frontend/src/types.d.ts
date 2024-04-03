@@ -24,6 +24,7 @@ export type HotelFormData = {
   imageUrls: string[];
   adultCount: number;
   childCount: number;
+  rooms: number;
 };
 export type HotelArticleType = {
   _id: string,
