@@ -154,9 +154,13 @@ const GuestInfoForm = ({ hotel }: { hotel: HotelType }) => {
               valueAsNumber: true,
               max: {
                 value: hotel.childCount,
-                message: `Booking for more than ${hotel.childCount} ${
-                  hotel.childCount === 1 ? "child" : "children"
-                } is not possible for the selected dates.`,
+                message: `${
+                  hotel.childCount === 0
+                    ? "Booking for children is not possible for the selected dates"
+                    : `Booking for more than ${hotel.childCount} ${
+                        hotel.childCount === 1 ? "child" : "children"
+                      } is not possible for the selected dates.`
+                }`,
               },
             })}
             className="focus:outline-none ml-1 text-title w-full"
