@@ -12,7 +12,7 @@ const StarRatingFilter = ({
       <h3 className="font-semibold mb-2">Property rating</h3>
       <div className="flex flex-col gap-3">
         {Array.from({ length: 5 }).map((_, index) => (
-          <div className="flex gap-2" key={index}>
+          <div className="flex gap-2 items-center" key={index}>
             <input
               type="checkbox"
               value={(index + 1).toString()}

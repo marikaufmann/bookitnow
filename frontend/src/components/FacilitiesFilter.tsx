@@ -18,7 +18,7 @@ const FacilitiesFilter = ({
       <h3 className="font-semibold mb-2">Facilities</h3>
       <ul className="flex flex-col gap-2 text-sm ">
         {facilities.slice(0, 5).map((facility) => (
-          <li className="flex gap-2" key={facility}>
+          <li className="flex gap-2 items-center " key={facility}>
             <input
               checked={selectedFacilities.includes(facility)}
               type="checkbox"

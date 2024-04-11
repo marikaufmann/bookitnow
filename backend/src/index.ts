@@ -9,6 +9,7 @@ import { errorHandler } from "./middleware/errorHandler";
 import userRoutes from "./routes/users";
 import authRoutes from "./routes/auth";
 import myHotelsRoutes from "./routes/my-hotels";
+import myBookingsRoutes from "./routes/my-bookings";
 import hotelsRoutes from './routes/hotels'
 import articlesRoutes from './routes/articles'
 import { allowedOrigins } from "./config/allowedOrigins";
@@ -47,8 +48,9 @@ app.use("/api/auth", authRoutes);
 app.use("/api/my-hotels", myHotelsRoutes);
 app.use("/api/hotels", hotelsRoutes);
 app.use("/api/articles", articlesRoutes);
+app.use("/api/my-bookings", myBookingsRoutes);
 app.get("*", (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, "../../frontend/index.html"));
+  res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
 });
 app.use(errorHandler);
 

@@ -1,4 +1,5 @@
 import * as apiClient from "../api-client.ts";
+import { useNavigate } from "react-router-dom";
 
 import { useQuery } from "react-query";
 
@@ -6,17 +7,21 @@ import { trendingCities } from "../config/hotel-options-config";
 const CLOUDINARY_DESTINATIONS_URL = import.meta.env
   .VITE_CLOUDINARY_DESTINATIONS_URL;
 
-const Trending = ({
-  handleSearch,
-}: {
-  handleSearch: (destination: string) => void;
-}) => {
+const Trending = () => {
   const { data: userLocation } = useQuery(
     "getUserLocation",
     apiClient.fetchUserLocation
   );
-  const userCountry = userLocation?.country?.name;
+  const navigate = useNavigate();
 
+  const userCountry = userLocation?.country?.name;
+  const handleSearch = (destinationWithFlag: string) => {
+    const destination = destinationWithFlag.split(' ')[0]
+    sessionStorage.setItem("destination", destination);
+    navigate("/search");
+    document.location.reload();
+    navigate(0);
+  };
   return (
     <div>
       <h1 className="text-title md:text-3xl text-xl font-bold mb-1">

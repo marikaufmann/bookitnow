@@ -27,11 +27,8 @@ const Articles = () => {
       >
         {articles && articles.length ? (
           articles.map((article: ArticleType) => (
-            <>
-              <SwiperSlide
-                key={article._id}
-                className="relative h-[300px] rounded-md overflow-hidden hover:shadow-2xl"
-              >
+            <div key={article._id}>
+              <SwiperSlide key={article._id} className="relative h-[300px] rounded-md overflow-hidden hover:shadow-2xl">
                 <Link to={`/article/${article._id}`}>
                   <img
                     src={article.imageUrl}
@@ -45,7 +42,7 @@ const Articles = () => {
                   </div>
                 </Link>
               </SwiperSlide>
-            </>
+            </div>
           ))
         ) : (
           <div>articles not found</div>

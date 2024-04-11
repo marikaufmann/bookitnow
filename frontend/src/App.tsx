@@ -13,7 +13,6 @@ import MyBookings from "./pages/MyBookings";
 import { useAppContext } from "./hooks/use-app-context";
 import Article from "./pages/Article";
 import ScrollToTop from "./components/ScrollToTop";
-import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   const { isLoggedIn } = useAppContext();
@@ -40,7 +39,6 @@ function App() {
               <Route path="/my-bookings" element={<MyBookings />} />
             </>
           )}
-          <Route path="/404" element={<PageNotFound />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>

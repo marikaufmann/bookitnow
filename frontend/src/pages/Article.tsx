@@ -1,16 +1,18 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import * as apiClient from "../api-client";
 import { useQuery } from "react-query";
 import { ArticleType, HotelArticleType } from "../types";
+import PageNotFound from "../components/PageNotFound";
 
 const Article = () => {
   const { articleId } = useParams();
-  const navigate = useNavigate()
-  const { data: article } = useQuery<ArticleType>("fetchArticles", () =>
+  const { data: article, isLoading } = useQuery<ArticleType>("fetchArticles", () =>
     apiClient.fetchArticleById(articleId!)
   );
+  if (!article && !isLoading) {
+    return <PageNotFound />;
+  }
   if (!article) {
-    navigate("/404");
     return "";
   }
   return (

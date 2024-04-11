@@ -34,6 +34,7 @@ export type HotelSearchResponseType = {
 };
 export type BookingType = {
   _id: string;
+  userId: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -52,4 +53,10 @@ export type ArticleType = {
   names: string[];
   imageUrls: string[];
   captions: string[];
+};
+
+export type PaymentIntentResponse = {
+  paymentIntentId: string;
+  clientSecret: string;
+  totalCost: number;
 };

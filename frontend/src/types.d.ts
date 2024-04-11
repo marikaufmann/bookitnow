@@ -27,16 +27,30 @@ export type HotelFormData = {
   rooms: number;
 };
 export type HotelArticleType = {
-  _id: string,
+  _id: string;
   name: string;
   imageUrl: string;
   caption: string;
   text: string;
 };
 export type ArticleType = {
-  _id: string
+  _id: string;
   title: string;
   imageUrl: string;
   text: string;
   hotels: HotelArticleType[];
+};
+
+export type BookingFormData = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  adultCount: number;
+  childCount: number;
+  checkIn: string;
+  checkOut: string;
+  rooms: number;
+  hotelId: string;
+  paymentIntentId: string;
+  totalCost: number;
 };

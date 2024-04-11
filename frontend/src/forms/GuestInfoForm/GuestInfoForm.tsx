@@ -119,10 +119,10 @@ const GuestInfoForm = ({ hotel }: { hotel: HotelType }) => {
             wrapperClassName="min-w-full"
           />
         </label>
-        <label className="flex p-2 rounded-md w-full bg-bg text-gray-600">
+        <label className="flex p-2 rounded-md w-full bg-bg text-gray-600 ">
           Adults:
           <input
-            className="focus:outline-none ml-1 text-title"
+            className="focus:outline-none ml-1 text-title w-full"
             type="number"
             min={1}
             max={20}
@@ -159,7 +159,7 @@ const GuestInfoForm = ({ hotel }: { hotel: HotelType }) => {
                 } is not possible for the selected dates.`,
               },
             })}
-            className="focus:outline-none ml-1 text-title"
+            className="focus:outline-none ml-1 text-title w-full"
           />
         </label>
         {errors.childCount && (
@@ -187,20 +187,20 @@ const GuestInfoForm = ({ hotel }: { hotel: HotelType }) => {
               },
               valueAsNumber: true,
             })}
-            className="focus:outline-none ml-1 text-title"
+            className="focus:outline-none ml-1 text-title w-full"
           />
         </label>
         {errors.rooms && (
           <span className="text-xs text-[#F56C6C]">{errors.rooms.message}</span>
         )}
-        <div className="px-2 py-4 bg-bg divide-y divide-gray-100 rounded-md mt-4">
+        <div className="shadow-2xl px-2 py-4 bg-bg divide-y divide-gray-100 rounded-md mt-4">
           <h1 className="font-semibold text-title pb-2">Price</h1>
           <div className="pt-2">
             <dl className="flex justify-between">
               <dt className="text-title text-sm">room / night</dt>
-              <dd>€ {hotel.pricePerNight}</dd>
+              <dd className="text-sm text-title">€ {hotel.pricePerNight}</dd>
             </dl>
-            <h3 className="font-bold text-title mt-4">Total:</h3>
+            <h3 className="font-bold text-title mt-6">Total:</h3>
             <dl className="flex justify-between ">
               <dt>
                 {rooms} {rooms === 1 ? "Room" : "Rooms"} / {numberOfNights}{" "}

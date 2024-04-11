@@ -32,7 +32,7 @@ const MyHotels = () => {
       </div>
       {hotels.map((hotel: HotelType, index: number) => (
         <Link to={`/edit-hotel/${hotel._id}`} key={index}>
-          <div className="p-4  bg-gray-100 rounded flex flex-col gap-1 hover:bg-gray-200 hover:shadow">
+          <div className="p-4  bg-gray-100 rounded-lg flex flex-col gap-1 hover:bg-gray-200 hover:shadow">
             <h1 className="font-semibold text-lg">{hotel.name}</h1>
             <p>
               {hotel.city}, {hotel.country}

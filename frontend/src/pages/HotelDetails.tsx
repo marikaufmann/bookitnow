@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import * as apiClient from "../api-client.ts";
 import {
   MapPin,
@@ -20,19 +20,23 @@ import {
   Waves,
 } from "lucide-react";
 import GuestInfoForm from "../forms/GuestInfoForm/GuestInfoForm.tsx";
+import PageNotFound from "../components/PageNotFound.tsx";
 
 const HotelDetails = () => {
   const { hotelId } = useParams();
-  const navigate = useNavigate();
-  const { data: hotel } = useQuery(
+  const { data: hotel, isLoading } = useQuery(
     "fetchHotelById",
     () => apiClient.fetchHotelById(hotelId || ""),
     { enabled: !!hotelId }
   );
+
+  if (!hotel && !isLoading) {
+    return <PageNotFound />;
+  }
   if (!hotel) {
-    navigate("/404");
     return "";
   }
+
   return (
     <div className="max-w-7xl w-full mx-auto flex-1 sm:px-6 px-4 sm:py-4 py-2 min-h-screen">
       <div className="flex flex-col">
