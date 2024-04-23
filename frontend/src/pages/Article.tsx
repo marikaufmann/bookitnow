@@ -24,7 +24,7 @@ const Article = () => {
           className="w-full object-cover object-center h-[300px]"
         />
       </div>
-      <div className="max-w-7xl w-full mx-auto flex-1 px-8 ">
+      <div className="max-w-7xl w-full mx-auto flex-1 sm:px-4 px-1 ">
         <h1 className="text-3xl max-sm:max-w-sm text-center mx-auto sm:text-5xl  font-bold mt-14">
           {article.title}
         </h1>

@@ -22,7 +22,7 @@ const Header = () => {
   }, [location.pathname]);
   return (
     <div className="w-full bg-headerbg  z-10  ">
-      <div className="max-w-7xl mx-auto py-2 px-4 md:px-8  flex justify-between items-center gap-4">
+      <div className="max-w-7xl mx-auto py-2 sm:px-4 px-1  flex justify-between items-center gap-4">
         <Link to="/">
           <div className="sm:h-[45px] h-[30px] w-full">
             <img src="/logo.png" className="h-full" />

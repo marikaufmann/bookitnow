@@ -73,8 +73,8 @@ const SearchBar = () => {
   }, []);
 
   return (
-    <div className="absolute max-w-7xl mx-auto w-full inset-x-0 laptop:top-[320px] top-[300px] px-4">
-      <div className="bg-bg rounded-lg laptop:h-14  mx-4 flex border-[#c99284] shadow-2xl ">
+    <div className="absolute max-w-7xl mx-auto w-full inset-x-0 laptop:top-[320px] top-[300px] px-2">
+      <div className="bg-bg rounded-lg laptop:h-14  sm:mx-4 flex border-[#c99284] shadow-2xl ">
         <form
           action=""
           className="flex h-full laptop:flex-row flex-col w-full laptop:gap-3 gap-2 p-2"

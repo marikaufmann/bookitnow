@@ -10,7 +10,7 @@ const Home = () => {
   const { data: hotels } = useQuery("fetchHotels", apiClient.fetchHotels);
 
   return (
-    <div className="max-w-7xl w-full mx-auto flex-1 px-8">
+    <div className="max-w-7xl w-full mx-auto flex-1 sm:px-4 px-1">
       <div className="min-h-screen laptop:py-10 py-48">
         <Trending />
         <Recommendations hotels={hotels ? hotels : []} />

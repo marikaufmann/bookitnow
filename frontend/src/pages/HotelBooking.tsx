@@ -54,7 +54,7 @@ const HotelBooking = () => {
   }
 
   return (
-    <div className="max-w-7xl w-full mx-auto flex-1 sm:px-6 px-4 sm:py-4 py-2 min-h-screen ">
+    <div className="max-w-7xl w-full mx-auto flex-1 sm:px-4 px-1 sm:py-4 py-2 min-h-screen ">
       <div className="flex gap-6 max-md:flex-col">
         <div className="flex-[35%] flex-col rounded-lg shadow-2xl border border-gray-200">
           <h1 className="p-4 font-bold text-xl text-title">Your booking</h1>

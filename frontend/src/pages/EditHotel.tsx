@@ -45,7 +45,7 @@ const EditHotel = () => {
     deleteHotel(hotelId);
   };
   return (
-    <div className="max-w-7xl w-full mx-auto flex-1 px-8">
+    <div className="max-w-7xl w-full mx-auto flex-1 sm:px-4 px-1">
 
       <ManageHotelForm
         onSave={onSave}

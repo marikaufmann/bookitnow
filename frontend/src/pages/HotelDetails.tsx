@@ -38,7 +38,7 @@ const HotelDetails = () => {
   }
 
   return (
-    <div className="max-w-7xl w-full mx-auto flex-1 sm:px-6 px-4 sm:py-4 py-2 min-h-screen">
+    <div className="max-w-7xl w-full mx-auto flex-1 sm:px-4 px-1 sm:py-4 py-2 min-h-screen">
       <div className="flex flex-col">
         <div className=" grid grid-cols-3 grid-rows-3 gap-2">
           <div className="row-start-1 row-end-3 col-start-1 col-end-3 max-h-[300px] rounded-lg">

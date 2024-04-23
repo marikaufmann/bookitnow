@@ -79,7 +79,7 @@ const Search = () => {
     setSelectedMaxPrice(MAX);
   };
   return (
-    <div className="max-w-7xl w-full mx-auto flex-1 px-8">
+    <div className="max-w-7xl w-full mx-auto flex-1 sm:px-4 px-1">
       <div className="min-h-screen laptop:py-10 py-48">
         <div className="flex gap-4">
           <div className=" w-full flex flex-col  border border-gray-200 rounded-lg flex-[25%] h-fit shadow">
